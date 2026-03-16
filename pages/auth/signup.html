@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <!-- page-specific styles -->
+  <link rel="stylesheet" href="../auth/assets/css/signup.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navLeft">
+      <div class="logo">
+        <a href="../../index.html">Cold Topic</a>
+      </div>
+    </div>
+
+    <div class="navRight">
+      <ul class="navLinks">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../shop/index.html">Shop</a></li>
+        <li><a href="../cart/index.html">Cart</a></li>
+      </ul>
+            <div class="searchContainer">
+        <button class="searchIcon" id="searchToggle">Search</button>
+        <input type="text" class="searchBar" placeholder="Search for Product" id="searchInput">
+      </div>
+      <li style="list-style: none; margin-right: 20px;">
+        <a href="login.html">Sign In</a>
+      </li>
+      <button class="accountButton" onclick="window.location.href='login.html'">
+        Sign Up
+      </button>
+    </div>
+  </nav>
+
+  <section class="authSection">
+    <div class="authContainer">
+      <h2>Create Account</h2>
+      <p>Join Cold Topic today</p>
+
+      <form id="signupForm">
+        <input type="text" id="signupName" placeholder="Full Name" required>
+        <input type="text" id="signupUsername" placeholder="Username" required>
+        <input type="email" id="signupEmail" placeholder="Email Address" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+
+        <button type="submit" class="authButton">Sign Up</button>
+      </form>
+
+      <p class="authSwitch">
+        Already have an account?
+        <a href="login.html">Login</a>
+      </p>
+    </div>
+  </section>
+<script src="../../assets/js/script.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script>
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('signupName').value;
+  const username = document.getElementById('signupUsername').value;
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+  const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+  if (password !== confirmPassword) {
+    alert('Passwords do not match');
+    return;
+  }
+
+  const result = registerUser(name, username, email, password);
+
+  if (result.success) {
+    alert(result.message);
+    window.location.href = 'login.html';
+  } else {
+    alert(result.message);
+  }
+});
+</script>
+</body>
+</html>
