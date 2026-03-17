@@ -292,6 +292,10 @@ if (searchInput) {
 
 function shiftNavLeft() {
   if (!navLinks) return;
+  if (window.innerWidth <= 640) {
+    resetNav();
+    return;
+  }
   // shift nav links further left when search is active
   const shift = searchInput.offsetWidth + 120;
   navLinks.style.transition = 'transform 0.3s ease';

@@ -549,27 +549,70 @@ a {
 }
 
 @media (max-width: 640px) {
-  .navLeft,
-  .navRight,
-  .auth-elements {
-    width: 100%;
-  }
-
   .navbar {
-    align-items: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    min-height: auto;
   }
 
-  .searchContainer,
-  .searchBar.active,
+  .navLeft {
+    flex: 0 0 auto;
+  }
+
+  .navRight {
+    width: 100%;
+    min-width: 0;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .navLinks {
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    min-width: 0;
+  }
+
+  .navLinks::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navLinks a,
+  .navRight li a,
+  .auth-elements .nav-link,
+  .searchIcon,
   .accountButton,
   .auth-elements .logout-btn,
   .auth-elements .admin-link {
-    width: 100%;
+    width: 2.45rem;
+    height: 2.45rem;
+    min-height: 2.45rem;
+  }
+
+  .auth-elements {
+    display: flex;
+    gap: 0.5rem;
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .searchContainer,
+  .accountButton,
+  .auth-elements .logout-btn,
+  .auth-elements .admin-link {
+    width: auto;
   }
 
   .searchBar {
-    position: static;
-    margin-top: 0.6rem;
+    right: 0;
+    top: calc(100% + 0.45rem);
+  }
+
+  .searchBar.active {
+    width: min(70vw, 12rem);
   }
 
   .heroContent h1 {
